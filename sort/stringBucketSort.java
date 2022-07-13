@@ -4,6 +4,12 @@
  * https://sites.google.com/site/mattzhangcube/home/coding
 */
 
+/*
+ * Idea: If objects have only limited number of values, we can create K ordered buckets, go through the list of objects and put each of them in their corresponding buckets, sort each bucket, then concatenate all the buckets to get the result.
+ * Complexity: N
+ * As a special case, if each bucket only contains a single element, it's Counting sort.
+*/
+
 public class stringBucketSort{
     /* Sort a string using bucket sort.
      * we only count characters between 'a' to 'z'
