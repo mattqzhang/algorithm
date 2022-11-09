@@ -1,6 +1,9 @@
 /*
 Rearrange Array
+Given an array arr[] of size n where every element is in range from 0 to n-1.
 Rearrange a given array so that Arr[i] becomes Arr[Arr[i]] with O(1) extra space.
+
+https://www.geeksforgeeks.org/rearrange-given-array-place/
 */
 
 // The function to rearrange an array in-place so that arr[i]
