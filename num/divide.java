@@ -17,7 +17,7 @@ public class divide {
   
     static int dividing(int a, int b)throws MyException{
       int sign = 1;
-      int low, high;
+      int low = 1, high = a;
       if(b==0) {
          throw new MyException("divide by 0");        
       }
@@ -34,13 +34,13 @@ public class divide {
          return 0;
      
       //now we have a >=b, and b>=2;
-      low = 1;
+      /* low = 1;
       high = low*b;
       while(high*b < a){
          low = high;
          high *= b;
-      }
-      /* now we have low*b <= a <= high*b
+      } */
+      /* now we have low*b <= a <= high*b  // note: it's not needed.
        * do binary search for the solution
        */
       int s = bSearch(a, b, low, high);           
