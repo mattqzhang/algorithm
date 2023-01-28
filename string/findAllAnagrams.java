@@ -8,10 +8,13 @@ public List<Integer> findAnagrams(String s, String p) {
     if(p.length() > s.length())
         return res;
 
+    // hash map to store all chars of p, with their counts.
     HashMap<Character, Integer> hm = new HashMap<>();
     for(char c : p.toCharArray())
         hm.put(c, hm.getOrDefault(c, 0) + 1);
 
+    // Move the fast pointer, if it's a matching char with p, decrease the ct in hm.
+    // When fast - low > p.length, need to add chars back, it's it's in the hm.
     int fast = 0, slow = 0;
     int diff = hm.size();
     while(fast < s.length()){
@@ -22,6 +25,7 @@ public List<Integer> findAnagrams(String s, String p) {
             if(hm.get(c) == 0 )
                 diff --;
         }
+
         fast ++;
         // move the window, drop the current char at the back
         if(fast > p.length()){
@@ -35,6 +39,8 @@ public List<Integer> findAnagrams(String s, String p) {
             // move the index after we drop
             slow ++;
         }
+
+        // when diff==0, we must have same window size, and chars with same ct
         if(diff == 0)
             res.add(slow);
     }
