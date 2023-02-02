@@ -19,9 +19,9 @@ public static boolean isMatch(String text, String pattern) {
     boolean first_match = (!text.isEmpty() &&
             (pattern.charAt(0) == text.charAt(0) || pattern.charAt(0) == '.'));
 
-    if (pattern.length() >= 2 && pattern.charAt(1) == '*'){
-        return (isMatch(text, pattern.substring(2)) ||
-                (first_match && isMatch(text.substring(1), pattern)));
+    if (pattern.length() >= 2 && pattern.charAt(1) == '*'){   // parttern is starts with "c*..."
+        return (isMatch(text, pattern.substring(2)) ||     // 0 occurance of 'c*'
+                (first_match && isMatch(text.substring(1), pattern)));   // if firstMatch, then probe for next char in text
     } else {
         return first_match && isMatch(text.substring(1), pattern.substring(1));
     }
