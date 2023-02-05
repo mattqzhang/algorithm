@@ -14,17 +14,20 @@ public static String multiply(String num1, String num2) {
         for (int j = 0; j < len2; j++) {
             int v1 = num1.charAt(len1-1-i) - '0';
             int v2 = num2.charAt(len2-1-j) - '0';
+            // logically, i, and j count from right side/low digit of the numbers
             res[i + j] +=  v1 * v2 ;
         }
     }
 
-    // fix all carries. Note that res is reverse order of actual numbers.
+    // fix all carries. Note that res is reverse order of actual numbers, 
+    // so carry of i is added to i+1 (right side).
     for (int i = 0; i < len1 + len2; i++) {
         while (res[i] >9) {
             res[i + 1] += res[i] / 10;
             res[i] = res[i] % 10;
         }
     }
+    // reverse the order to get final output
     StringBuilder ans=new StringBuilder();
     for (int i = len1 + len2-1; i >=0; i--) {
         ans.append(res[i]);
