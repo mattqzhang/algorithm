@@ -39,9 +39,9 @@ public String minWindow(String s, String t) {
         if(hm.containsKey(c) && hm.get(c).intValue() == curWin.get(c).intValue())
             same ++;
 
-        // shrink left: move the left char out of curWin
+        // if we have a solution, keep shrinking left: move the left char out of curWin
         while(l<=r && same == target) {
-            // we have a solution for now, save it
+            // save the current solution
             if (res[0] == -1 || r - l + 1 < res[0]) {  // no prior solution, or better solution
                 res[0] = r - l + 1;
                 res[1] = l;
@@ -51,10 +51,11 @@ public String minWindow(String s, String t) {
             c = s.charAt(l);
             l++;
             curWin.put(c, curWin.get(c) - 1);
-            // note that we have same == target earlier, so after moving left, we need to decrease it
+            // if this is a target char, then need to decrease same count 
             if(hm.containsKey(c) && hm.get(c).intValue() > curWin.get(c).intValue())
                 same --;
         }
+        // not a solution, keep moving right, till we have a solution
         r++;
     }
     return res[0] == -1 ? "" : s.substring(res[1], res[2]+1);
