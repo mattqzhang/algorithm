@@ -21,7 +21,9 @@ public List<String> fullJustify(String[] words, int maxWidth) {
         int space = 1, extra = 0;
         // calculate the space between words, except last line, or single word line
         if (r != words.length && r != l + 1) {
+            // avg space per word
             space = (maxWidth - len + 1) / (r - l - 1) + 1;
+            // extra ones cannot be divided
             extra = (maxWidth - len + 1) % (r - l - 1);
         }
         StringBuilder sb = new StringBuilder(words[l++]);
@@ -29,6 +31,7 @@ public List<String> fullJustify(String[] words, int maxWidth) {
         while (l < r) {
             for (int i = 0; i < space; i++)
                 sb.append(' ');
+            // insert extra ones to each word in sequence
             if (extra-- > 0)
                 sb.append(' ');
             sb.append(words[l++]);
