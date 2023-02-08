@@ -1,6 +1,9 @@
 /*
 Text Justification
 Given an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
+
+lc 68
+https://leetcode.com/problems/text-justification/description/
 */
 
 public List<String> fullJustify(String[] words, int maxWidth) {
