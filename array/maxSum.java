@@ -64,3 +64,33 @@ public class maxSum {
         maxSubSum(a);       
     }
 }
+
+
+// the logic here might be more straightforwad
+
+    public static void maxSubSum(int nums[]){
+        int sum = nums[0];
+        int max = sum;
+        int maxstart = 0, maxend = 0;
+        int start = 0, end = 0;
+
+        for (int i=0; i<nums.length; i++) {
+            end = i;
+            if (sum + nums[i] > sum) {
+                sum += nums[i];
+            } else {
+                sum  = nums[i];
+                start = i;
+            }
+
+            if (sum > max) {
+                max = sum;
+                maxstart = start;
+                maxend = end;
+            }
+        }
+
+        System.out.println("max sum is: " + max + ", starting from " + maxstart +
+                " and ending at " + maxend);
+    }
+

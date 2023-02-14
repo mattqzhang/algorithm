@@ -1,12 +1,13 @@
 /*
 lc 523
+https://leetcode.com/problems/continuous-subarray-sum/
 
 Continuous Subarray Sum
 Given a list of non-negative numbers and a target integer k, write a function to check if the array has a continuous subarray of size at least 2 that sums up to a multiple of k, that is, sums up to n*k where n is also an integer.
 Use pre-computed sum array, or hashmap, to compare the remainders. 
 */
 
-// Solution 1: use  cumulative sum array
+// Solution 1: use cumulative sum array
 public boolean checkSubarraySum(int[] nums, int k) {
     int[] sum = new int[nums.length + 1];
     sum[0] = 0;
@@ -29,6 +30,7 @@ public boolean checkSubarraySum(int[] nums, int k) {
     int sum = 0;
     //<remainder, index> mapping
     HashMap < Integer, Integer > map = new HashMap < > ();
+    // initialize the case remainder = 0
     map.put(0, -1);
     for (int i = 0; i < nums.length; i++) {
         sum += nums[i];

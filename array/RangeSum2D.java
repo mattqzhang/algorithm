@@ -1,6 +1,9 @@
 /*
 Range Sum Query - 2D
 Given a 2D matrix matrix, find the sum of the elements inside the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).
+
+lc 304
+https://leetcode.com/problems/range-sum-query-2d-immutable/description/
 */
 
   /*
@@ -12,7 +15,8 @@ private int[][] rowSum;
 public test3(int[][] matrix) {
     if(matrix.length == 0 || matrix[0].length == 0)
         return;
-
+    
+    // index shift, extra 0's at row=0 and j=0
     rowSum = new int[matrix.length][matrix[0].length + 1];
     for(int i=0; i < matrix.length; i++){
         for(int j=0; j<matrix[0].length; j++){
@@ -38,6 +42,7 @@ public NumMatrix(int[][] matrix) {
     if(matrix.length == 0 || matrix[0].length == 0)
         return;
 
+    // index shift, 0 for all row=0 and j=0
     compuSum = new int[matrix.length + 1][matrix[0].length + 1];
     for(int i=0; i < matrix.length; i++){
         for(int j=0; j < matrix[0].length; j++){

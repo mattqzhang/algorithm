@@ -19,7 +19,7 @@ public int subarraySum(int[] nums, int k) {
 }
 
 // solution 2: if only non-negative values, use moving window
-
+//   note: there's no need to sort the array
 int subSum(int a[], in K){
   int n = a.length;
   if n==0 return -1;
