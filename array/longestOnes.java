@@ -1,7 +1,9 @@
 /*
 Max Consecutive Ones
 Given an array A of 0s and 1s, we may change up to K values from 0 to 1. Return the length of the longest (contiguous) subarray that contains only 1s. 
-Use a window, move right first to contain at most K zeros, then move left
+
+Use a window, move right first to contain at most K zeros, the length from left is the total sum.
+then move left till it pass first zero, then move right again to make it K zeros
 
 lc 1004
 https://leetcode.com/problems/max-consecutive-ones-iii/
@@ -13,8 +15,9 @@ public static int longestOnes(int[] A, int K) {
     int ct_zero = 0;
     int sum = 0, max = 0;
     while (r < A.length) {
-        while (r < A.length && (A[r] == 1 ||
-                (A[r] == 0 && ct_zero < K))) {
+        while (r < A.length && 
+                (A[r] == 1 ||
+                  (A[r] == 0 && ct_zero < K))) {
             sum++;
             if (sum > max)
                 max = sum;

@@ -1,0 +1,55 @@
+/*
+General Data Structure operations
+*/
+
+// given int[][2], sort on arr[0]:
+ Arrays.sort(arr, new Comparator<int[]>(){
+    @override
+    public int compare(int[] o1, int[]o2){
+ return o1[0] - o2[0];
+     }
+  };
+
+
+LinkedList<T> list:
+get(), get(i), put(), isEmpty(), size(), peek(), peekLast(), remove(), removeLast()
+for(T node : list)
+for(int i=0; i<list.size(); i++) { list.get(i) }
+Iterator it = list.iterator(); while(it.hasNext()){ it.next() }
+
+ArrayList<T> arrList:
+ArrayList.add(index, Elem)  // can insert to a specific location
+
+// ArrayList to array:
+ArrayList<String> list = new ArrayList<>(2);
+String[] array = list.toArray(new String[list.size()]);
+
+Queue qe = new LinkedList():
+offer, poll(), peek()
+while(!qe.isEmpty())
+
+// PriorityQueue<T>:
+offer, poll(), peek()
+PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
+        @Override
+        public int compare(int[] arr1, int[] arr2) {
+            return arr1[2]-arr2[2];
+        }
+    });
+
+Stack<T> stk:
+push(), pop(), peek()
+while(!stk.isEmpty())
+
+
+HashSet<T> set:
+add(), remove(), contains()
+Iterator it = set.iterator(); while(it.hasNext()){ it.next() }
+
+
+HashMap<K, V>:
+put(key, val), get(key), contains(key), isEmpty(), getOrDefault(key, dflt)
+for (Map.Entry entry : hm.entrySet()) {entry.getKey(); entry.getValue()); 
+
+TreeMap<K, V>:
+put(), get(), floorKey(k), ceilingKey(k), lastKey()

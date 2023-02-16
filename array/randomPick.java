@@ -10,11 +10,7 @@ HashMap<int, Set<Integer>> hm;
 // initialize the hashmap
 public randomPick(int[] nums) {
     for(int i=0; i<nums.length; i++){
-        Set<Integer> set;
-        if(hm.containsKey(nums[i]))
-            set = hm.get(nums[i]);
-        else
-            set = new HashSet<Integer>();
+        Set<Integer> set = hm.getOrDefault(nums[i], new HashSet<Integer>());
         set.add(i);
         hm.put(nums[i], set);
     }
@@ -23,11 +19,13 @@ public randomPick(int[] nums) {
 // get a random pick index
 public int pick(int target) {
     Set<Integer> set = hm.get(target);
-    int[] arr = new int[set.size()];
-    int i = 0;
-    for(int idx : set){
-        arr[i++] = idx;
+    int size = set.size;
+    int choice = new Random().nextInt(size);
+    int ct = 0;
+
+    for(Integer obj : set){
+       if (ct == choice)
+         return obj.intValue();
+       ct ++;
     }
-    Random r = new Random();
-    return arr[r.nextInt(arr.length)];
 }
