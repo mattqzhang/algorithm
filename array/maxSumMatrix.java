@@ -19,11 +19,11 @@ int findMaxPath(int mat[][]) {
     for(int i=1; i<N; i++){
         for(int j=0; j<M; j++){
             if(j==0)  //first in the row
-                dp[i][0] = Math.max(dp[i-1][0], dp[i-1][1]);
+                dp[i][0] = mat[i][0] + Math.max(dp[i-1][0], dp[i-1][1]);
             else if(j == M-1)  // last in the row
-                dp[i][M-1] = Math.max(dp[i-1][M-1], dp[i-1][M-1]);
+                dp[i][M-1] = mat[i][M-1] + Math.max(dp[i-1][M-1], dp[i-1][M-1]);
             else // max of the 3 path from above level
-                dp[i][j] = Math.max(Math.max(dp[i-1][j], dp[i-1][j-1]), dp[i-1][j+1]);
+                dp[i][j] = mat[i][j] + Math.max(Math.max(dp[i-1][j], dp[i-1][j-1]), dp[i-1][j+1]);
             
             max = Math.max(dp[i][j], max);
         }
