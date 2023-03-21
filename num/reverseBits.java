@@ -2,6 +2,8 @@
 1. Reverse all bits in a int number: xor with all F, or simply ~x
 
 2. Reverse the order of bits in an int number: I have shown 4 ways to do it:
+lc 190
+https://leetcode.com/problems/reverse-bits/description/
 */
 
 
@@ -27,10 +29,11 @@ public class reverseBit {
         int result = 0;
 
         int ct = 0;
-        while (v > 0) {
+        while (v != 0) {
             int i = v & 1;
             result += i << (31 - ct);
-            v >>= 1;
+            // use unsigned shift >>> here:
+            v >>>= 1;
             ct++;
         }
 
@@ -48,7 +51,7 @@ public class reverseBit {
             result <<= 1;            
             result |= v & 1;
             // or: result += v & 1;
-            v >>= 1;
+            v >>>= 1;
             ct--;
         }
 
