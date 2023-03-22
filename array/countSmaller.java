@@ -7,6 +7,10 @@ Count of Smaller Numbers After Self
 You are given an integer array nums and you have to return a new counts array. The counts array has the property where counts[i] is the number of smaller elements to the right of nums[i].
 */
 
+/* Solution 1:
+https://www.youtube.com/watch?v=2SVLYsq5W8M&ab_channel=HuaHua
+*/
+
 class Node {
     int val;
     int count; // same value
@@ -29,6 +33,9 @@ public List<Integer> countSmaller(int[] nums) {
     if (nums.length == 0)
         return ans;
 
+    // as we're find the nodes to the right, so we insert node reversely,
+    //   from end of array (right to left), then we'll be able to record the 
+    //   # of nodes smaller
     int n = nums.length;
     Node root = new Node(nums[n - 1]);
     ans.add(0);

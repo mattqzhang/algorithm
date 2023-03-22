@@ -7,6 +7,9 @@ Anagram: Two strings are anagrams if they are composed of the same letters, and 
 In this file I also include auxiliary functions to
 - sort a string using bucket sort
 - remove spaces from string
+
+lc 242
+https://leetcode.com/problems/valid-anagram/description/
 */
 
 import java.util.*;
