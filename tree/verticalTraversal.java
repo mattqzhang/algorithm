@@ -1,6 +1,9 @@
 /*
 Vertical Order Traversal of Binary Tree
 Given a binary tree, return the vertical order traversal of its nodes values.
+
+lc 987
+https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/description/
 */
 
 // DFS to build the TreeMap

@@ -61,6 +61,7 @@ private void remove(DLNode loc, int val){
     loc.prev = null;
     loc.next = null;
 }
+
 /** Inserts a new key <Key> with value 1. Or increments an existing key by 1. */
 public void inc(String key) {
     int currentCt = 0;
@@ -71,6 +72,7 @@ public void inc(String key) {
         remove(hm.get(key), currentCt);
     }
     hm.get(key).ct = currentCt + 1;
+
     // setup TreeMap, and DL node link
     add(hm.get(key), currentCt + 1);
 
