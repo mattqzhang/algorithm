@@ -8,6 +8,10 @@
     - Non-recursive merge sort: uses bottom-up merge sort. First merge every two consecutive values, then merge every two consecutive blocks. Note that the last block may contain arbitrary number of values.
     Complexity: NlogN
     Merge Sort is often useful for processing partitioned large data blocks.
+
+lc 912
+https://leetcode.com/problems/sort-an-array/description/
+
  */
 
 package Sorting;

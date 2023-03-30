@@ -2,6 +2,9 @@
  * Quick Sort
  * Author: Qing "Matt" Zhang
  * https://sites.google.com/site/mattzhangcube/home/coding 
+
+lc 912
+https://leetcode.com/problems/sort-an-array/description/
 */
 
 /* Basic idea: one pointer i keeps the largest index, such that all values to the left <= pivot. 
@@ -45,6 +48,9 @@ public class quickSort {
    }
 
 }
+
+
+/********* my lc solution ***********/
 
 void swap(int[] nums, int i, int j){
     int tmp = nums[i];
