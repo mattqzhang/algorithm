@@ -2,7 +2,52 @@
 Restore a Binary Tree given the in-order and pre-order traversal list
 The root is the 1st element in the pre-order list, and divides the left and right tree in the in-order list.
 We can use this property to solve this problem recursively.
+
+lc 105
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
 */
+
+    // always find next root using preOrder
+    int preOrderIndex;
+    // inorder node index
+    Map<Integer, Integer> hm = new HashMap<>();
+
+    TreeNode buildRec(int[] preorder, int start, int end) {
+        // start and end controls the size of each subtree,
+        // and decides when to stop recursion here
+        if (start > end) return null;
+
+        int rootVal = preorder[preOrderIndex];
+        TreeNode root = new TreeNode(rootVal);
+
+        preOrderIndex++;
+        root.left = buildRec(preorder, start, hm.get(rootVal) - 1);
+        root.right = buildRec(preorder, hm.get(rootVal) +1, end);
+
+        return root;
+    }
+
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if (preorder.length == 0) return null;
+        if (preorder.length == 1) return new TreeNode(preorder[0]);
+
+        preOrderIndex = 0;
+        // value to index mapping, in the inorder array
+        for (int i=0; i<inorder.length; i++) {
+            hm.put(inorder[i], i);
+        }
+        return buildRec(preorder, 0, preorder.length-1);
+    }
+
+
+        public static void main(String[] args) {
+        test1 obj=new test1();
+
+        System.out.println("\ndone");
+    }
+
+
+// a little more complicate solution, same idea:
 
 import java.util.*;
 /* Restree a binary tree, from the in-order and pre-order traversal lists
