@@ -2,6 +2,9 @@
 search for a value x in a sorted and rotated array
 If the current array is already in order, apply bSearh() recursively.
 Else find the mid value, and identify the subarray x belongs to, then depending on whether it's in order, apply rotateSearch() or bSearch() recursively.
+
+lc 33
+https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 */
 
 // solution 1: no recursive call, use while loop:

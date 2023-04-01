@@ -3,6 +3,7 @@ Print all the permutations of an array
 Starting from beginning, for each element i, swap with every element j after i, then recursively permute remaining for each instance.
 
 lc 46
+https://leetcode.com/problems/permutations/
 */
 
 // solution 1:

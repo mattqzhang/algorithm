@@ -1,9 +1,48 @@
 /*
  * Binary Search in a sorted arrary
  *
- * Author: Qing "Matt" Zhang
- * https://sites.google.com/site/mattzhangcube/home/coding
- */
+ * lc 704
+ * https://leetcode.com/problems/binary-search/description/ 
+*/
+
+// recursive solution
+    int bSearch(int[] nums, int target, int start, int end) {
+        if (start > end) return -1;
+        
+        int mid = (start + end)/2;
+        if (target == nums[mid]) return mid;
+        
+        if (target > nums[mid])
+            return bSearch(nums, target, mid+1, end);
+        else
+            return bSearch(nums, target, start, mid-1);
+    }
+
+    public int search(int[] nums, int target) {
+        if (nums.length == 0) return -1;
+
+        return bSearch(nums, target, 0, nums.length-1);
+    }
+
+// non-recursive solution
+    public int search(int[] nums, int target) {
+        if (nums.length == 0) return -1;
+
+        int start = 0, end = nums.length - 1;
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            if (nums[mid] == target)
+                return mid;
+            if (nums[mid] > target)
+                end = mid - 1;
+            else
+                start = mid + 1;
+        }
+        return -1;
+    }
+
+
+// old solution
 
 public class bSearch {
 

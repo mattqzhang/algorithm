@@ -1,5 +1,8 @@
 /*
 Return true if and only if the given array A is monotonic.
+
+lc 896
+https://leetcode.com/problems/monotonic-array/description/
 */
 
 // solution 1:

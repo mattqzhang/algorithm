@@ -1,5 +1,7 @@
 /*
 lc 384
+https://leetcode.com/problems/shuffle-an-array/description/
+
 Shuffle the arrary: 
 Starting from end of array, for each element j, choose a random value in [0, j] and swap it with element j.
 */

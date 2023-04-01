@@ -4,7 +4,22 @@ There're several ways to do this:
 - bit shifting, check last bit one by one
 - mod 2, check remainder every time.
 - for sparse bits, n &(n-1) is most effective.
+
+lc 191
+https://leetcode.com/problems/number-of-1-bits/description/
 */
+
+    // treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int ct = 0;
+        while (n !=0) {
+            if ((n & 1) == 1) ct++;
+            n >>>= 1;    // unsigned right shift
+        }
+        return ct;
+    }
+
+
 
 /* Count number of set bit in a number's binary form */
 public class countOnes {
