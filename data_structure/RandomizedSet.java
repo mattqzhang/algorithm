@@ -34,6 +34,8 @@ public boolean insert(int val) {
 }
 
 /** Removes a value from the set. Returns true if the set contained the specified element. */
+// Cannot remove directly from arrList, o.w. the index of remaining ones will change.
+// So move last one to this index, and delete last one.
 public boolean remove(int val) {
     if(!hm.containsKey(val))
         return false;

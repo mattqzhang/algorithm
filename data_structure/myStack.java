@@ -1,10 +1,11 @@
 /*
-Implement a Stack
+Implement a Stack from scratch
 Implement the following functionality: push(), pop(), peek(), isEmpty()
 */
 
 public class myStack<T> {
 
+    // it's basically a linked list node, push to head, and remove from head 
     private class Node{
         T data;
         Node next;

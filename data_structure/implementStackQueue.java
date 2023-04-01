@@ -6,7 +6,7 @@ lc 225
 https://leetcode.com/problems/implement-stack-using-queues/description/
 */
 
-// using two queues:
+// using two queues: push O(1), pop O(n)
 class MyStack {
     Queue<Integer> q1, q2;
     int top;
@@ -16,11 +16,14 @@ class MyStack {
         q2 = new LinkedList<Integer>();        
     }
     
+    // always push to q1
     public void push(int x) {
         q1.add(x);
         top = x;
     }
     
+    // move front vals to empty q2, till last one in q1 and pop it
+    // then switch q1/q2 (q2 is empty list again)
     public int pop() {
         if (q1.size() == 1) {
             return q1.remove();
@@ -45,7 +48,7 @@ class MyStack {
 }
 
 
-/**** using one queue  ****/
+/**** using one queue, push O(n), pop O(1)  ****/
 // when push, add to queue, then move all elements in front behind it.
 
 class MyStack {

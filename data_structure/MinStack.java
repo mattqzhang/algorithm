@@ -15,34 +15,33 @@ https://leetcode.com/problems/min-stack/description/
 */
 
 class MinStack {
-    Stack<Integer> stack;
-    int min;
-    /** initialize your data structure here. */
+
+    // using two stacks, one for data, and one for min
+    Stack<Integer> dataSt;
+    Stack<Integer> minSt;
+
     public MinStack() {
-        stack = new Stack<>();
-        min = Integer.MAX_VALUE;
+        dataSt = new Stack();
+        minSt = new Stack();
     }
     
-    public void push(int x) {
-        stack.push(x);
-        min = Math.min(x, min);
+    public void push(int val) {
+        dataSt.push(val);
+        if (minSt.isEmpty() || val <= minSt.peek())
+            minSt.push(val);
     }
     
     public void pop() {
-        int x = stack.pop();
-        if (x == min) {
-            min = Integer.MAX_VALUE;
-            for (Integer i:stack) {
-                min = Math.min(i, min);
-            }
-        }
+        int val = dataSt.pop();
+        if (val == minSt.peek())
+            minSt.pop();
     }
     
     public int top() {
-        return stack.size() == 0 ? 0 : stack.peek();
+        return dataSt.peek();
     }
     
     public int getMin() {
-        return min;
+        return minSt.peek();
     }
 }
