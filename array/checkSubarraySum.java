@@ -11,10 +11,12 @@ Use pre-computed sum array, or hashmap, to compare the remainders.
 public boolean checkSubarraySum(int[] nums, int k) {
     int[] sum = new int[nums.length + 1];
     sum[0] = 0;
+    // cumulative sum
     for(int i=1; i <= nums.length; i++){
         sum[i] = sum[i-1] + nums[i-1];
     }
 
+    // compute and verify sum[i, j]
     for(int i=0; i<nums.length; i++){
         for(int j=i+1; j<nums.length; j++){
             int cur_sum = sum[j+1] - sum[i];
@@ -29,13 +31,13 @@ public boolean checkSubarraySum(int[] nums, int k) {
 public boolean checkSubarraySum(int[] nums, int k) {
     int sum = 0;
     //<remainder, index> mapping
-    HashMap < Integer, Integer > map = new HashMap < > ();
+    HashMap <Integer, Integer> map = new HashMap < > ();
+
     // initialize the case remainder = 0
     map.put(0, -1);
     for (int i = 0; i < nums.length; i++) {
         sum += nums[i];
-        if (k != 0)
-            sum = sum % k;
+        sum = sum % k;
 
         if (map.containsKey(sum)) {
             //get a new one with same remainder

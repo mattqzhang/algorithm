@@ -1,7 +1,11 @@
 /*
 Merge K sorted Lists.
+
+lc 23
+https://leetcode.com/problems/merge-k-sorted-lists/description/
 */
 
+// solution 1: using PQ:
 
 class ListNode {
     int val;
@@ -70,5 +74,42 @@ public class MergeKLists {
         }
 
         System.out.println("\ndone ");
+    }
+}
+
+
+// solution 2: don't use PQ:
+
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        ListNode dummy = new ListNode();
+        ListNode head = dummy;
+        int n = lists.length;
+        int emptyListCnt = 0;
+        int minVal = Integer.MAX_VALUE;
+        int minIdx = -1;
+        while (true) {
+            emptyListCnt = 0;
+            for(int i = 0; i < n; i++) {
+                if (lists[i] != null) {
+                    if (lists[i].val < minVal) {
+                        minVal = lists[i].val;
+                        minIdx = i;
+                    }            
+                } else {
+                    emptyListCnt++;
+                }
+            }
+            if (emptyListCnt >= n) {
+                break;
+            }
+            head.next = lists[minIdx];
+            head = head.next;
+            lists[minIdx] = lists[minIdx].next;
+            minVal = Integer.MAX_VALUE;
+            minIdx = -1;
+        }
+        
+        return dummy.next;
     }
 }

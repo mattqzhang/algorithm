@@ -1,7 +1,10 @@
 /*
-Range Sum Query - 1D
+Range Sum Query - 1D Immutable
 Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.
 There are many calls to sumRange function.
+
+lc 303
+https://leetcode.com/problems/range-sum-query-immutable/description/
 */
 
 
