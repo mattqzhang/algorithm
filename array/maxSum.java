@@ -3,6 +3,9 @@ Maximum continuous subset sum problem: Given an array, find the maximum sum of c
 Go through the array, and compute the current sum:
 - if it's bigger than the maxSum, update global max, start, end
 - If the subset sum < 0 at some time, this cannot be a solution when concatenating with future data. Reset next block for a new start.
+
+lc 53
+https://leetcode.com/problems/maximum-subarray/description/
 */
 
 // solution 1: only print max

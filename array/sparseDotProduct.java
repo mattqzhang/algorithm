@@ -11,6 +11,7 @@ class SparseVector {
     SparseVector(int[] nums) {
         for(int i=0; i<nums.length; i++) {
             if(nums[i] != 0) {
+                // <index, val>
                 int[] entry = new int[]{i, nums[i]};
                 data.add(entry);
             }

@@ -4,6 +4,9 @@ Several ways to solve this problem:
 - Sort the array, use two pointers, one at beginning and one at end, compute sum and move toward middle till they meet.
 - Hash the array, for each a, look for x-a
 - Build a binary search tree, for each a, look for x-a in the tree
+
+lc 1
+https://leetcode.com/problems/two-sum/description/
 */
 
 // solution 1:

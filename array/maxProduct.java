@@ -1,6 +1,8 @@
 /*
-lc 152
 Maximum subarray Product
+
+lc 152
+https://leetcode.com/problems/maximum-product-subarray/
 */
 
 public int maxProduct(int[] nums) {

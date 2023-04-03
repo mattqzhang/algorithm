@@ -1,6 +1,9 @@
 /*
 Combine two sorted arrays. 1st has space to hold the content of the 2nd one.
 Merge from tail of both arrays and fill in the 1st array, to accommodate the space.
+
+lc 88
+https://leetcode.com/problems/merge-sorted-array/description/
 */
 
 // solution 1:
