@@ -1,8 +1,28 @@
 /*
 Longest Increasing Continuous Sequence: find a continuous and sorted subsequence of a given sequence.
 We can simply go through the sequence in one pass, and update or reset the current length at each step.
+
+lc 647
+https://leetcode.com/problems/longest-continuous-increasing-subsequence/description/
 */
 
+    public int findLengthOfLCIS(int[] nums) {
+        if (nums.length == 0) return 0;
+        int max = 1;
+        int ct = 1;
+        for (int i=1; i < nums.length; i++) {
+            if (nums[i] > nums[i-1]) {
+                ct ++;
+                if (ct > max) 
+                    max = ct;
+            } else 
+                ct = 1;
+        }
+        return max;        
+    }
+
+
+// if record start index
 public class LongestIncContSeq {
 
     /* longest increasing continuous subsequence */

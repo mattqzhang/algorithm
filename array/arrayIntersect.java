@@ -4,7 +4,12 @@ Solution 1: use two pointers to iterate through the two arrays, O(m + n)
 Solution 2: use hash table to hash b, and search each a, O(m+n)
 Solution 3: if m<<n, binary search each a in b, O(mlgn).
                   Note: since a is ordered, we can decrease the binary search range for each value in a. (left side start from the last index)
+
+More complicate:
 Intersection of two arrays(unsorted and may have duplicates)
+
+lc 349
+https://leetcode.com/problems/intersection-of-two-arrays/description/
 */
 
 public int[] intersection(int[] nums1, int[] nums2) {

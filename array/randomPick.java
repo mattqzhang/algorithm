@@ -1,6 +1,9 @@
 /*
 Random Pick Index
 Given an array of integers with possible duplicates, randomly output the index of a given target number. You can assume that the given target number must exist in the array.
+
+lc 398
+https://leetcode.com/problems/random-pick-index/description/
 */
 
 // data structure to save the array

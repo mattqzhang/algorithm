@@ -4,17 +4,12 @@ Fair Work Load: Given an array of elements, divide into K groups, so that
 - the maximum of the sum of each group is minimized
 */
 
-import java.util.*;
 
 /* Given an array of elements, divide into K groups, so that
  * - elements in each group is continuous
  * - the maximum of the sum of each group is minimized
  */
 public class fairWorkLoad {
-
-    static int getmax(int a, int b) {
-        return a > b ? a : b;
-    }
 
     static int getsum(int a[], int start, int end) {
         int sum = 0;
@@ -30,7 +25,6 @@ public class fairWorkLoad {
      * recursively.
      * */
     static int fairWorker_greedy(int a[], int start, int k) {
-        int max = 0;
         int minSum = getsum(a, start, a.length - 1);
 
         if (k == 1)
@@ -41,7 +35,7 @@ public class fairWorkLoad {
             // sum of the first part
             int sum = getsum(a, start, i);
             // recursively compare with remaining part of k-1 partitions
-            max = getmax(sum, fairWorker_greedy(a, i + 1, k - 1));
+            int max = Math.max(sum, fairWorker_greedy(a, i + 1, k - 1));
             // update global
             if (max < minSum)
                 minSum = max;
@@ -60,33 +54,27 @@ public class fairWorkLoad {
     static ArrayList<Integer> workSplit(int a[], int maxLoad) {
         ArrayList<Integer> cut = new ArrayList<Integer>();
         int load = a[0];
-        int i = 1;
-        while (i < a.length) {
-            if (load + a[i] <= maxLoad) {
+
+        for (int i=1; i<a.length; i++) {
+            if (load + a[i] < maxLoad) {
                 load += a[i];
             } else {
                 load = a[i];
-                cut.add(i - 1);
+                cut.add(i-1);
             }
-            i++;
         }
-
         return cut;
     }
 
-    //
     static int fairWorker_bs_sum(int a[], int k) {
-        // max element in the array
-        int max = a[0];
+        // lower bound is the max element in the array
+        int lo = a[0];
         for (int i = 1; i < a.length; i++) {
-            if (a[i] > max)
-                max = a[i];
+            if (a[i] > lo)
+                lo = a[i];
         }
-        // lower bound of search space is the max element
-        // (each element in its own partition)
-        int lo = max;
-        // higher end of search space is the sum of all elements (single
-        // partition)
+
+        // higher end of search space is the sum of all elements
         int hi = getsum(a, 0, a.length - 1);
 
         // binary search the [lo, hi] range for the workload which accommodates
@@ -99,16 +87,14 @@ public class fairWorkLoad {
             ArrayList<Integer> cut = workSplit(a, mid);
             int workerCt = cut.size() + 1;
 
-            // have more available workers to use, we can decrease the sum
-            // in each partition,
+            // have more available workers to use, we can decrease the sum in each partition,
             // even if it needs "=k" workers if sum is in the range,
             // we can still see if we can reduce the upper bound of the maxLoad.
             if (workerCt <= k) {
                 hi = mid;
                 finalCut = cut;
             }
-            // no solution within k workers if sum is in [lo, mid]
-            // we we try the other half
+            // no solution within k workers if sum is in [lo, mid], try the other half
             else
                 lo = mid + 1;
         }

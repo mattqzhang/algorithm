@@ -1,12 +1,50 @@
 /*
+Median of Two Sorted Arrays
 Solution 1: use two pointers to iterate through the two arrays in k steps
 Solution 2: binary search for the k-th element
 https://www.geeksforgeeks.org/median-two-sorted-arrays-different-sizes-ologminn-m/
+
+lc 4
+https://leetcode.com/problems/median-of-two-sorted-arrays/description/
 */
 
-/* find the medium of two sorted arrays */
+// binary search:
 
-public class twoMedium {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m = nums1.length;
+        int n = nums2.length;
+        if ((m+n)%2 == 0) {
+            return (findKth(nums1, nums2, 0, 0, (m+n)/2) + 
+                   findKth(nums1, nums2, 0, 0, (m+n)/2+1))/2.0;
+        } else {
+            return findKth(nums1, nums2, 0, 0, (m+n+1)/2);
+        }
+    }
+
+    //find kth large number
+    private int findKth(int[] nums1, int[] nums2, int startA, int startB, int k) { 
+        // run out of one array
+        if (startA >= nums1.length) return nums2[startB+k-1];
+        if (startB >= nums2.length) return nums1[startA+k-1];
+        
+        if (k == 1) {
+            return Math.min(nums1[startA], nums2[startB]);
+        }
+        
+        // mid points of each array to k
+        int midA = startA + k/2 -1 >= nums1.length ? Integer.MAX_VALUE : nums1[startA + k/2 - 1];
+        int midB = startB + k/2 -1 >= nums2.length ? Integer.MAX_VALUE : nums2[startB + k/2 - 1];
+        
+        // left k/2 part of B can be throw away
+        if (midA > midB) {
+            return findKth(nums1, nums2, startA, startB + k/2, k - k/2);
+        }
+        // throw away right k/2 part
+        return findKth(nums1, nums2, startA + k/2, startB, k - k/2);
+    }
+
+
+// two pointers to loop each array
 
     // find by counting and merging the arrays, O(N)
     // for total odd numbers, medium is the value at (n/2 +1)
@@ -60,23 +98,3 @@ public class twoMedium {
         return medium;
     }
    
-    /****************************************************
-     *  binary search for the medium, O(lgN)
-     *  */
-    static float bsMedium(int a[], int b[]){
-        float medium = 0;
-       
-       
-        return medium;       
-    }
-   
-    public static void main(String[] args) {
-        int a[] = {1, 2, 6, 8, 9, 10};
-        int b[] = {3, 4, 5, 7};
-   
-        float medium = ctMedium(a, b);
-        System.out.println(" by counting: " + medium);
-    }
-
-}
-

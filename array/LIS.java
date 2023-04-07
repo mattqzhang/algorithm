@@ -1,11 +1,36 @@
 /*
 Longest Increasing Sequence (LIS): find a subsequence of a given sequence in which the subsequence elements are in sorted order, lowest to highest, and in which the subsequence is as long as possible.
 We can solve this problem using dynamic programming
+
+lc 300
+https://leetcode.com/problems/longest-increasing-subsequence/description/
 */
 
-/* Longest Increasing Sequence */
+    public int lengthOfLIS(int[] nums) {
+        int n = nums.length;
+        if (n == 0) return 0;
 
-import java.util.ArrayList;
+        int[] len = new int[n];
+        int max = 1;   // we have at least one number
+        for (int i=0; i<n; i++) {
+            int ct = 1;
+            len[i] = 1;
+            // explore a previous smaller one 
+            for (int j=0; j <i; j++) {
+                if (nums[j] < nums[i]) {
+                    ct = Math.max(ct, len[j]  + 1);
+                    if (ct > len[i])
+                        len[i] = ct;
+                    if (ct > max)
+                        max = ct;
+                } 
+            }
+        }
+        return max;        
+    }
+
+
+// if need to find the sequence
 
 public class LIS {
 

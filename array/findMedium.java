@@ -1,7 +1,10 @@
 /*
 Find the median of an unsorted array
+
 Solution 1: use partition algorithm as the one used in quick sort.
+
 Solution 2: use two heaps, one min heap and one max heap, and their sizes differ by at most one. Dynamically adjust the heaps so that all values in the min heap is bigger than the max heap (root of min heap is bigger than root of max heap). Medium is then the average of min root and max root(if same size), or the max root (if N_max = N_min +1). This method can be used for dynamic streams data.
+
 Solution 3: use Priority Queue, similar to the two heaps: all values in q1 < all values in q2, and size differ by at most 1.
 */
 
