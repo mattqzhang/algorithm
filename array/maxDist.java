@@ -35,7 +35,6 @@ public class maxDist {
                 }
             }
         }
-        System.out.println("versiont 1: ");
         System.out.println("\tmax distance is: " + max + ", between " + start
                 + " and " + end);
     }
@@ -54,13 +53,11 @@ public class maxDist {
         startval[0] = a[0];
         for (int i = 0; i < len-1; i++)
             startval[i+1] = (startval[i] < a[i+1] ? startval[i] : a[i+1]);
-        //System.out.println(Arrays.toString(startval));
                      
         // ending values
         endval[len-1] = a[len-1];
         for(int i = len-1; i>0; i--)
             endval[i-1] = (a[i-1] <= endval[i] ? endval[i] : a[i-1]);
-        //System.out.println(Arrays.toString(endval));
        
         int max = 0, start = 0, end = 0;
         int i=0, j=0;
@@ -79,7 +76,6 @@ public class maxDist {
                 i++;
         }
                
-        System.out.println("versiont 2: ");
         System.out.println("\tmax distance is: " + max + ", between " + start
                 + " and " + end);
     }

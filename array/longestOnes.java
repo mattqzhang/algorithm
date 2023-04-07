@@ -7,7 +7,6 @@ then move left till it pass first zero, then move right again to make it K zeros
 
 lc 1004
 https://leetcode.com/problems/max-consecutive-ones-iii/
-
 */
 
 public static int longestOnes(int[] A, int K) {
