@@ -11,8 +11,10 @@ public int[][] kClosest(int[][] points, int K) {
     int dist[] = new int[points.length];
     for(int i=0; i<points.length; i++)
         dist[i] = getDist(points[i]);
-
+    // keep each original <index, dist>
     int[] copy = dist.clone();
+
+    // get the k-th dist
     Arrays.sort(dist);
     int distK = dist[K-1];
 

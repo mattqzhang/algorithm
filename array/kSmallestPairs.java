@@ -12,6 +12,7 @@ public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         return res;
     }
 
+    // pq of [idx1, idx2, sum], and sorted on sum
     PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
         @Override
         public int compare(int[] arr1, int[] arr2) {

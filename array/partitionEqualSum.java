@@ -30,6 +30,7 @@ public static boolean canPartition(int[] nums) {
 
     int half = sum/2;
     // sum space from 0 to half
+    // this is used to identify what we need to find, not what we arleady have
     boolean[] dp = new boolean[half + 1];
     // seed target for computation
     dp[half] = true;
@@ -40,13 +41,14 @@ public static boolean canPartition(int[] nums) {
         // it’s the complement of some values checked earlier
         if(dp[nums[i]])
             return true;
+
         // for each num[i], check the values from num[i] to half,
         // if that value exists, mark the complement to be checked later.
-        for(int j = nums[i]+1; j <= half; j++){
-            // j is the target to be found
-            if(dp[j])
+        for(int val = nums[i]+1; val <= half; val++){
+            // val is the target to be found
+            if(dp[val])
                 // mark the complement to be found
-                dp[j - nums[i]] = true;
+                dp[val - nums[i]] = true;
         }
     }
     return false;

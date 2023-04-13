@@ -5,7 +5,6 @@ Solution: find each up segment, and skip each down segment.
 */
 
 // get the buy and sell points of the multi transactions
-public class stockSellMulti {
 
 public static void stockBuySell(int price[]) {
     int n = price.length;
@@ -48,5 +47,4 @@ public static void main(String args[]) {
 
     // fucntion call
     stockBuySell(price);
-}
 }

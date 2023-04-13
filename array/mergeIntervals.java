@@ -1,7 +1,37 @@
 /*
 Merge Intervals
 Given a collection of intervals, merge all overlapping intervals.
+
+lc 56
+https://leetcode.com/problems/merge-intervals/description/
 */
+
+// using array sort
+
+    public int[][] merge(int[][] intervals) {
+        if (intervals.length == 1) return intervals;
+        
+        // Arrays.sort(intervals, (a,b)->Integer.compare(a[0], b[0]));
+        Arrays.sort(intervals, new Comparator<int[]>() {
+           public int compare(int[] o1, int[]o2) {
+                return o1[0] - o2[0];   
+           }
+        });
+
+        LinkedList<int[]> merged = new LinkedList<>();
+        for (int[] i:intervals) {
+            if (merged.isEmpty() || merged.getLast()[1] < i[0]) {
+                merged.add(i);
+            } else {
+                merged.getLast()[1] = Math.max(i[1], merged.getLast()[1]);
+            }
+        }
+        
+        return merged.toArray(new int[merged.size()][]);
+    }
+
+
+// use PQ
 
 public class MergeIntervals {
 

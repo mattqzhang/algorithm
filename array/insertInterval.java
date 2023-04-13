@@ -59,6 +59,9 @@ public int[][] insertInterval(int[][] intervals, int[] newInterval) {
     return save.toArray(new int[save.size()][2]);
 }
 
+
+// a similar solution
+
 public int[][] insert(int[][] intervals, int[] newInterval) {
     // init data
     int newStart = newInterval[0], newEnd = newInterval[1];

@@ -1,4 +1,7 @@
 /*
+lc 621
+https://leetcode.com/problems/task-scheduler/
+
 Given a char array representing tasks CPU need to do. It contains capital letters A to Z where
 different letters represent different tasks. Tasks could be done without original order.
 Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.
@@ -16,29 +19,8 @@ You need to return the least number of intervals the CPU will take to finish all
         int max_row = ct[25] - 1;
         int idle_slots = max_row * n;
         for (int i = 24; i >= 0 && ct[i] > 0; i--) {
-            idle_slots -= Math.min(ct[i], max_row);
+            idle_slots -= Math.min(ct[i], max_row);   // if several ones has max
         }
         return idle_slots > 0 ? idle_slots + tasks.length : tasks.length;
     }
 
-       //sort, get the job with largest remaining count
-    public int leastInterval(char[] tasks, int n) {
-        int[] map = new int[26];
-        for (char c: tasks)
-            map[c - 'A']++;
-        Arrays.sort(map);
-        int time = 0;
-        while (map[25] > 0) {
-            int i = 0;
-            while (i <= n) {
-                if (map[25] == 0)
-                    break;
-                if (i < 26 && map[25 - i] > 0)
-                    map[25 - i]--;
-                time++;
-                i++;
-            }
-            Arrays.sort(map);
-        }
-        return time;
-    }

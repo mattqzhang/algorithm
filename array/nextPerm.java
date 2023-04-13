@@ -20,13 +20,25 @@ private static void reverse(int[] nums, int start) {
         j--;
     }
 }
+
+
+// example: 
+// initial: 1 3 7 5 2
+// find i:      i       // i to end are decreasing
+// find j:        j     // search from end: 5 > 3 
+// swap:    1 5 7 3 2   // swap 3 with 5
+// reverse: 1 5 2 3 7   // reverse from 7
+
 public static void nextPermutation(int[] nums) {
     int len = nums.length;
     int i = len -1;
+
+    // find first i from end, which is bigger than previous one
+   // i to end are all decreasing
     while(i>0 && nums[i] <= nums[i-1])
         i--;
 
-    // find j to swap
+    // find j to swap with i-1, where j is bigger than i
     if(i>0){
         // (i-1, j) is the first increasing sequence
         int j = nums.length -1;
