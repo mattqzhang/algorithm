@@ -40,13 +40,12 @@ public int minMeetingRooms(int[][] intervals) {
         // new meetings starts while no existing one ends yet, need to add a new room
         if(endTimeQ.isEmpty() || intervals[i][0] < endTimeQ.peek()){
             ct++;
-            endTimeQ.offer(intervals[i][1]);
         }else{
             // a previous meeting has finished already, delete it and add new one
             //  note: we only delete it when a new one is coming
             endTimeQ.poll();
-            endTimeQ.offer(intervals[i][1]);
         }
+        endTimeQ.offer(intervals[i][1]);
     }
     return ct; 
 }

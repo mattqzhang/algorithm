@@ -9,7 +9,38 @@ DFS:
 - if a node already exists in hashmap (visited), return the mapping node
 - otherwise, create a mapping node, and put this pair in hashmap,
 - for each neighbor node, DFS find/create the mapping neighbor node, link to the mapping node. 
+
+lc 133
+https://leetcode.com/problems/clone-graph/description/
 */
+
+    private HashMap<Node, Node> hm = new HashMap<>();
+
+    public Node cloneGraph(Node node) {
+        if(node == null)
+            return null;
+
+        // this node's already visited, return the mapping node
+        if(hm.containsKey(node))
+            return hm.get(node);
+
+        // create a mapping node, and add this pair in hashmap
+        Node newNode =  new Node(node.val, new ArrayList<>());
+        // put the pair in hashMap before exploring neighbors
+        hm.put(node, newNode);
+
+        // for each of the neighbor nodes, find/create the mapping neighbor node by DFS
+        // and link to the mapping node
+        for (int i = 0; i < node.neighbors.size(); i++) {
+            Node neighbor = node.neighbors.get(i);
+            Node newNeighbor = cloneGraph(neighbor);
+            newNode.neighbors.add(newNeighbor);
+        }
+        return newNode;
+    }
+
+
+////// old solution
 
 import java.util.*;
 

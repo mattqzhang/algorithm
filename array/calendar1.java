@@ -28,7 +28,9 @@ lc 729
         return true;
     }
 
-/** sort in tree map */
+
+/** sort in tree map, sort by start  */
+    // map<start, end>
     TreeMap<Integer, Integer> calendar;
 
     MyCalendar() {
