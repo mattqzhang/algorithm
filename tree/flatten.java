@@ -1,4 +1,7 @@
 /*
+lc 114
+https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/
+
 Flatten a tree into a list
 
 Given a binary tree, flatten it to a linked list in-place.
@@ -28,6 +31,31 @@ The flattened tree should look like:
 Note that the left child of all nodes should be NULL.
 */
 
+// recursive solution
+
+    public void flatten(TreeNode root) {
+        if (root == null) return;
+        if (root.left == null) {
+            flatten(root.right);
+            return;
+        }
+        
+        flatten(root.left);
+        flatten(root.right);
+        
+        TreeNode leftEnd = root.left;
+        while (leftEnd.right != null)
+            leftEnd = leftEnd.right;
+        
+        TreeNode tmp = root.right;
+        root.right = root.left;
+        leftEnd.right = tmp;
+        root.left = null;     
+    }
+
+
+// non-recursive
+
 void flatten(Node root){ 
 
    if(root == null)
@@ -53,20 +81,3 @@ void flatten(Node root){
     }     
 }
 
-// recursive solution
-void flattenNode_rec(Node node){
-  if(node == null || node.left == null){
-     return;
-  }else{
-    flattenNode(node.right);
-    flattenNode(node.left);
-
-    Node temp = node.left;
-    while(temp.right != null){
-      temp = temp.right;
-    } 
-    temp.right = node.right;
-    node.right = node.left;
-    node.left = null;
-  }
-}

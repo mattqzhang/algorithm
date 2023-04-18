@@ -1,6 +1,9 @@
 /*
 Symmetric BTree
 Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
+lc 101
+https://leetcode.com/problems/symmetric-tree/description/
 */
 
 public boolean isMirror(TreeNode t1, TreeNode t2) {
