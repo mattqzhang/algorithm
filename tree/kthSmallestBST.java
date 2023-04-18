@@ -25,25 +25,21 @@ https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/
     public int kthSmallest(TreeNode root, int k) {
         Stack<TreeNode> stk = new Stack<>();
         TreeNode cur = root;
-
-        while(cur != null) {
-            stk.push(cur);
-            cur = cur.left;
-        }
         int ct = 0;
-        while (!stk.isEmpty()) {
-            cur = stk.pop();
-            if (ct == k-1) {
-                return cur.val;
-            }
-            ct ++;
 
-            cur = cur.right;
-            while(cur!=null) {
+        while (true) {
+            if (cur != null) {
                 stk.push(cur);
                 cur = cur.left;
-            }
+            } else if (!stk.isEmpty()) {
+                cur = stk.pop();
+                ct ++;
+                if (ct == k) {
+                    return cur.val;
+                }
+                cur = cur.right;
+            } else 
+                break;
         }
         return -1;
     }
-

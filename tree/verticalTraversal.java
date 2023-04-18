@@ -7,6 +7,7 @@ https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/descript
 */
 
 // DFS to build the TreeMap
+//  x: vertical level, y: height
 private void dfs(TreeNode node, int x, int y, TreeMap<Integer, List<int[]>> map) {
     if(node == null)
         return;
@@ -25,7 +26,7 @@ public List<List<Integer>> verticalTraversal(TreeNode root) {
     for(List<int[]> y_val: map.values()) {
         Collections.sort(y_val, new Comparator<int[]>(){
             @Override
-            public int compare(int[] a1, int[] a2){
+            public int compare(iLnt[] a1, int[] a2){
                 // sort by level value in reverse order(big -> small, top -> bottom)
                 //  for the same level, order by value
                 return a1[0] == a2[0] ? a1[1] - a2[1] : a2[0] - a1[0];

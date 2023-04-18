@@ -58,31 +58,30 @@ public class treeTraverse{
         inOrder(tree.right);
     }
 
-    public static void inOrder_nonRec(Node root){
-      if(root == null)
-         return;
-     
-      Stack<Node> stack = new Stack<Node>();
-      Node cur = root;
-      while(cur !=null){
-        stack.push(cur);
-        cur = cur.left;
-      } 
 
-      // now stack contains the leftmost nodes
-      while(!stack.empty()){
-        cur = stack.pop();
-        System.out.println(cur.val + ", ");
-        if(cur.right != null){
-           cur = cur.right;
-           while(cur!=null){
-             stack.push(cur);
-             cur = cur.left;
-           }           
+    // non-recursive in-order (dfs) on a binary tree
+    public static List<TreeNode> inOrder_nonRec(TreeNode root){
+        List<TreeNode> res = new LinkedList<>();
+        if(root == null)
+            return res;
+
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        while(true) {
+            if (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            } else if (!stack.isEmpty()) {
+                cur = stack.pop();
+                res.add(cur);
+                cur = cur.right;
+            } else
+                break;
         }
-      }
+        return res;
     }
-  
+ 
+ 
     public static void postOrder(BinTree tree){
         if(tree == null)
             return;

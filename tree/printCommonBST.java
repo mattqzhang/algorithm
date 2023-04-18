@@ -2,7 +2,10 @@
 Find common nodes in two BST
 */
 
-// Function to print common elements in given two trees
+// solution 1:
+binary search each element of tree1 in tree2
+
+// Function to print common elements in given two BST
 static void printCommon(Node root1, Node root2) {
     Stack<Node> stack1 = new Stack<Node>();
     Stack<Node> s1 = new Stack<Node>();
