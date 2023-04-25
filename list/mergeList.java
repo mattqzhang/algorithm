@@ -1,5 +1,8 @@
 /*
 Merge two sorted lists
+
+lc 21
+https://leetcode.com/problems/merge-two-sorted-lists/description
 */
 
 //recursion

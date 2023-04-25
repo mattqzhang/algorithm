@@ -1,6 +1,4 @@
 /*
- * Click `Run` to execute the snippet below!
-
  Given an address book, where each entry consists of a name and a list of email addresses.
  Remove duplicates and return merged contacts.
  Two contacts are considered to be the same, if they share at least one email address.

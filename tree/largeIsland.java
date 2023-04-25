@@ -23,11 +23,9 @@ public class Solution {
         int ans = 0;
         for (int r = 0; r < N; ++r)
             for (int c = 0; c < N; ++c)
-                // only condsider entry with 0s
                 if (grid[r][c] == 0) {
                     grid[r][c] = 1;
                     ans = Math.max(ans, check(grid, r, c));
-                    // change it back to 1, as we only change 1 position
                     grid[r][c] = 0;
                 }
 
@@ -38,27 +36,25 @@ public class Solution {
         int N = grid.length;
         Stack<Integer> stack = new Stack();
         Set<Integer> seen = new HashSet();
-        stack.push(r0 * N + c0);   // code the index as a single value
-        group.add(r0 * N + c0);     // "1"s in this group
+        stack.push(r0 * N + c0);
+        seen.add(r0 * N + c0);
 
         while (!stack.isEmpty()) {
             int code = stack.pop();
-            int r = code / N, c = code % N;   // decode the index
-            for (int k = 0; k < 4; ++k) {     // loop through all neighbors
-                int nr = r + dr[k], nc = c + dc[k];  // get neighbor's row and column index
-                if (!group.contains(nr * N + nc) &&     // a new node
-                       0 <= nr && nr < N &&             // row idx in range
-                       0 <= nc && nc < N &&             // column idx in range
-                       grid[nr][nc] == 1) {             // it's a "1"
-                    stack.push(nr * N + nc);  // add to explore
-                    group.add(nr * N + nc);   // add to current group
+            int r = code / N, c = code % N;
+            for (int k = 0; k < 4; ++k) {
+                int nr = r + dr[k], nc = c + dc[k];
+                if (!seen.contains(nr * N + nc) && 0 <= nr && nr < N &&
+                        0 <= nc && nc < N && grid[nr][nc] == 1) {
+                    stack.push(nr * N + nc);
+                    seen.add(nr * N + nc);
                 }
             }
         }
 
-        return group.size();
+        return seen.size();
     }
-}
+
 
 ///////////////////////////////////////
 // Solution 2: DFS, record the groups

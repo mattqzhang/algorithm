@@ -16,7 +16,7 @@ public int depthSumInverse(List<NestedInteger> nestedList) {
     // then loop through the array and add them up
     int depth = findDepth(nestedList, list, 1);
     for(int[] item : list){
-        res += (depth + 1 - item[1]) * item[0];
+        res += item[0] * (depth + 1 - item[1]);
     }
     return res;
 }
