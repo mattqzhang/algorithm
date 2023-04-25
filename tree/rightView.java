@@ -1,7 +1,37 @@
 /*
 Binary Tree Right Side View
 Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+lc 199
+https://leetcode.com/problems/binary-tree-right-side-view/description/
 */
+
+// simple recursion.
+//  if left side view, change the code to search left child first
+
+    List<Integer> res;
+    void rec(TreeNode root, int level) {
+        if (root == null) return;
+        // the first node in this leve.
+        // as we search right to left, so it's the rightmost for the level
+        if (level == res.size())
+            res.add(root.val);
+
+        // search right, then left
+        rec(root.right, level+1);
+        rec(root.left, level+1);
+    }
+
+    public List<Integer> rightSideView(TreeNode root) {
+        res = new LinkedList<>();
+        if (root == null) return res;
+
+        rec(root, 0);
+        return res;
+    }
+
+
+---------------------------------------------------------------
 
 // breadth first search, look for last element of each row
 public List<Integer> rightSideView(TreeNode root) {
