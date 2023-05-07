@@ -6,6 +6,30 @@ lc 671
 https://leetcode.com/problems/second-minimum-node-in-a-binary-tree/description/
 */
 
+    int[] min;
+    void dfs(TreeNode root) {
+        if (root == null) return;
+        
+        if (min[0] == -1 || root.val < min[0]) {            
+            min[1] = min[0];
+            min[0] = root.val;
+        } else if (root.val > min[0] && 
+                (min[1] == -1 || root.val < min[1])) {
+            min[1] = root.val;
+        }
+        dfs(root.left);
+        dfs(root.right);
+    }
+
+    public int findSecondMinimumValue(TreeNode root) {
+         min = new int[]{-1, -1};
+         dfs(root);
+         return min[1];
+    }
+
+
+// a similar solution
+
 int min2 = -1;
 
 void dfs(TreeNode root, int min1){

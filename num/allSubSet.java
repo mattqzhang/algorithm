@@ -1,9 +1,13 @@
 /*
-Print all subset of an array: if the array is of size n, use a bitmap of length n, to control the output of each element.
+Subsets
+Given an integer array nums of unique elements, return all possible subsets (the power set).
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+lc 78
+https://leetcode.com/problems/subsets/description/
 */
 
-public class allSubSet {
-
+    // if the array is of size n, use a bitmap of length n, to control the output of each element.
     static void printAllSubSet(int[] arr){
         int n = arr.length;
        
@@ -30,7 +34,7 @@ public class allSubSet {
     }
 
 
-// another solution to output list:
+// leetcode func signature
 
 public static List<List<Integer>> subsets(int[] nums) {
     List<List<Integer>> result = new LinkedList();
@@ -60,9 +64,3 @@ public static List<List<Integer>> subsets(int[] nums) {
     }
     return result;
 }
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3};
-        printAllSubSet(arr);
-    }
-}
-

@@ -21,13 +21,12 @@ https://leetcode.com/problems/number-of-1-bits/description/
 
 
 
-/* Count number of set bit in a number's binary form */
-public class countOnes {
+    /* Count number of set bit in a number's binary form */
     static int count_shift(int val){
         int ct = 0;
         while(val > 0){
             ct += val & 1;
-            val >>= 1;
+            val >>= 1;   // note that we don't need >>>, as we test val>0 (all 1's are negavie)
         }
         return ct;
     }
@@ -52,17 +51,3 @@ public class countOnes {
         return ct;
     }
 
-    public static void main(String[] args) {
-        int val = 321, ct=0;
-        System.out.println("value is " + Integer.toBinaryString(val));
-
-        ct = count_shift(val);
-        System.out.println("count by shifting: " + ct);
-
-        ct = count_shift(val);
-        System.out.println("count by mod 2: " + ct);
-
-        ct = count_shift(val);
-        System.out.println("count sparse: " + ct);
-    }
-}

@@ -1,9 +1,6 @@
 /*
 Fibonacci: compute it recursively and non-recursively
-
 */
-
-public class Fibonacci {
 
     //compute Fibonacci non-recursively
     static int Fibonacci_nonrec(int n) {
@@ -31,10 +28,3 @@ public class Fibonacci {
         return Fibonacci_rec(n - 1) + Fibonacci_rec(n - 2);
     }
 
-    public static void main(String[] args) {
-        int n = 5;
-        System.out.println("compute Fibonacci non-recursively: " + Fibonacci_nonrec(n));
-        System.out.println("compute Fibonacci recursively: " + Fibonacci_rec(n));
-    }
-
-}

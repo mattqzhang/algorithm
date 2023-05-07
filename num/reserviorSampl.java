@@ -5,9 +5,6 @@ Reservoir Sampling: Given n element in S[1..n], choose k samples.
 This solution can be used for dynamic stream data
 */
 
-import java.util.Arrays;
-
-public class ReserviorSampl {
 
     static int[] reserviorSampling(int arr[], int K){
         int[] sample = new int [K];
@@ -30,11 +27,3 @@ public class ReserviorSampl {
         return sample;
     }
    
-    public static void main(String[] args) {
-        int arr[] = {1,2,3,4,5,6,7,8,9,10,11,12};
-        int sample[] = reserviorSampling(arr, 3);
-        System.out.println("sample: " + Arrays.toString(sample));
-    }
-
-}
-
