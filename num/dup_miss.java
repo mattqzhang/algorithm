@@ -11,12 +11,10 @@ n(n+1)(2n+1)/6 - sum(arr[i])^2 = d^2 - m^2
 Or, we can go through the array, and put each value i in the corresponding a[i]. Duplicate is the one that has appear twice, and miss is the one a[i] !=i
 */
 
-import java.util.*;
 
 /* Values 0 to n-1 each appear once, except one appear twice and one is missing.
  * Find the duplicate one and the missing one. 
  */
-public class dup_miss {
 
     static void swap(int a[], int i, int j) {
         int tmp = a[i];
@@ -48,11 +46,6 @@ public class dup_miss {
         }
     }
 
-    public static void main(String[] args) {
-        int arr[] = {1, 4, 5, 3, 0, 3, 7, 2};
-        dupmiss(arr);
-        System.out.println("final array is: " + Arrays.toString(arr));
-    }
 
 /*****************************************************************/
 
@@ -70,6 +63,29 @@ static void findDup(int arr[], int n){
             a[val-1] = 1;
     }
 }
+
+
+// if using only constant storage
+
+    public int findDuplicate(int[] nums) {
+        int sum = 0, n = nums.length - 1;
+        for (int v : nums) {
+            sum += v;
+        }
+        return sum - n*(n+1)/2;
+    }
+
+// if the one value is duplicated multiple times
+
+    public int findDuplicate(int[] nums) {
+        HashSet<Integer> hs = new HashSet();
+        for (int v : nums) {
+            if (hs.contains(v)) return v;
+            hs.add(v);
+        }
+        return -1;
+    }
+
 
 /* given arr size n, in range 1 .. n, one missing and one duplicate
    find the duplicate and missing one.
@@ -98,4 +114,4 @@ public static void main(String[] args) {
     findMiss(arr2, 5);
 
 }
-}
+
