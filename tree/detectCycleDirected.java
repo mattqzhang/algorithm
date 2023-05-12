@@ -6,6 +6,7 @@ if there's a cycle:
 - found a node visited, and also in the recursion stack
 */
 
+// graph[i][j]: exists edge node i --> node j
 public boolean hasCycle(int[][] graph) {
     int n = graph.length;
     boolean[] visited = new boolean[n];
@@ -35,7 +36,7 @@ private boolean dfs(int i, boolean[] visited, boolean[] recStack, int[][] graph)
         }
     }
 
-    // reset after this parth is explored
+    // reset after this path is explored
     recStack[i] = false;
     return false;
 }

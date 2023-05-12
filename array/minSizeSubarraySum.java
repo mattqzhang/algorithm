@@ -10,6 +10,8 @@ https://leetcode.com/problems/minimum-size-subarray-sum/description/
     public int minSubArrayLen(int target, int[] nums) {
         int left = 0, right = 0, min = Integer.MAX_VALUE;
         int sum = nums[0];
+
+        // two pointers, keep the window as small as possible
         while (right < nums.length) {
             if ( sum < target) {
                 right ++;

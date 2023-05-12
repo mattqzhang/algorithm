@@ -23,13 +23,6 @@ public void reverseString(char[] s) {
     return;
 }
 
-/*
- * Reverse the whole string, or only reverse the order of the words
- *
- * Author: Qing "Matt" Zhang
- * https://sites.google.com/site/mattzhangcube/home/coding
- */
-public class stringReverse {
 
     // reverse using java StringBuffer
     static String revStr_sb(String str) {
@@ -60,54 +53,3 @@ public class stringReverse {
         return snew;
     }
    
-    // reverse only the words
-    static String revStr_word(String str){
-        String snew = "";
-        if(str.isEmpty())
-            return snew;
-       
-        int start, end;
-        start = end =0;
-        String newword = "";
-       
-        for(int i = 0; i<str.length(); i++){
-            end = i;
-            //if((str.charAt(i) <'a' || str.charAt(i)>'z')
-            if((str.charAt(i) ==' ')|| i==str.length()-1 ){
-                //last char of the str should be included
-                 if(i == str.length()-1)
-                    end ++;
-               
-                newword = str.substring(start, end);
-                snew = newword + snew;
-                //start of a new word
-                start = i ++;               
-                if(start > str.length()) break;
-            }               
-        }
-       
-        return snew;
-    }
-   
-
-
-    public static void main(String[] args){
-        String str = " this     is a string 123 ";       
-       
-        String snew = revStr_sb(str);
-        System.out.println("reverse using StringBuffer: " + snew);
-       
-        snew = revStr_arr(str);
-        System.out.println("reverse as array: " + snew);
-       
-        snew = revStr_rec(str);
-        System.out.println("reverse recursively: " +snew);
-       
-        snew = revStr_word(str);
-        System.out.println("reverse words: " + snew);
-    }
-}
-
-
-
-

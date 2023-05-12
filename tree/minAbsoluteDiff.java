@@ -1,5 +1,6 @@
 /*
 Minimum Absolute Difference in BST
+Given the root of a Binary Search Tree (BST), return the minimum absolute difference between the values of any two different nodes in the tree.In order traversal, and find the min of two adjacent values.
 
 lc 530
 https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/
