@@ -1,5 +1,6 @@
 // Given unsorted array, and use binary search on it directly.
 // Some values will not be able to find. Identify those values.
+// key idea: check if mid value can be found, then recursively check lower and upper parts.
 public static void CheckHidden(int[] data, boolean[] hidden,
               int lo, int hi, int min_bound, int max_bound) {
     if (lo > hi) {
