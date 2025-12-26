@@ -9,9 +9,9 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
     // notice the fact that for max profit at any node, the buy point is the previous min price
     public int maxProfit(int[] prices) {
         if (prices.length == 1) return 0;
-        int minPrice = 0, maxProfit = 0;
+        int minPrice = prices[0], maxProfit = 0;
         
-        for (int i = 0; i < prices.length; i++) {
+        for (int i = 1; i < prices.length; i++) {
             if (prices[i] < minPrice) {
                 minPrice = prices[i];
             } else if (prices[i] - minPrice > maxProfit) {
