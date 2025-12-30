@@ -9,27 +9,23 @@ https://leetcode.com/problems/contiguous-array/description/
     // take 0 as -1
     // if it contains same number of 0 and 1,
     //   then the sum would be same before and after
-    public int findMaxLength(int[] nums) {
-        int sum = 0;
+    // compute the aggreated sum at each index and save in hashmap
+    public static int findMaxLength(int[] nums) {
+        int sum  = 0;
         int max = 0;
-        // <sum --> index> mapping
-        // If multiple with same sum, then only record the 1st index
-        //  the distance of indexes from the 1st of the same sum will be biggest.
+        // <sum, index>
         HashMap<Integer, Integer> hm = new HashMap<>();
         hm.put(0, -1);
 
         for (int i=0; i<nums.length; i++) {
-            if (nums[i] == 0)
-                sum --;
-            else
-                sum ++;
-            // 1st index with the sum
-            if (!hm.containsKey(sum)) {
+            sum += (nums[i] == 0) ? -1 : 1;
+            if (hm.containsKey(sum)) {
+                max = Math.max(max, i - hm.get(sum));
+            } else {
+                // only save the first index of this sum to get max length
                 hm.put(sum, i);
-            } else {  // get an index with same sum
-                int j = hm.get(sum);
-                max = (i - j) > max ? i - j : max;
             }
         }
-        return max;    
+
+        return max;
     }
