@@ -46,7 +46,6 @@ public static int coinChange(int[] coins, int sum) {
     For amount N, remove a coin C and get previous result for N-C
     * */
 public int coinChange(int[] coins, int sum) {
-    int max = sum + 1;
     int[] dp = new int[sum + 1];
     // max possible # of coins is sum, so set default to sum+1
     Arrays.fill(dp, sum+1);

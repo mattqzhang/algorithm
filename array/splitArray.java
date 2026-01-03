@@ -11,9 +11,24 @@
 再次找出和最大且小于等于5的子数组的个数，[1,2], [3], [4], [5]，发现有4组，此时我们的mid太小了，应该增大mid，
 我们让left=mid+1，此时left=6，right=5，循环退出了，我们返回left即可，代码如下
 
+
 Similar: lc 1011:
 https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 */
+
+// aux function to evaluate if given the sum, can the array be split into m partitions
+public boolean can_split(int[] nums, int m, long sum) {
+    int cnt = 1, curSum = 0;
+    for (int i = 0; i < nums.length; ++i) {
+        curSum += nums[i];
+        if (curSum > sum) {
+            curSum = nums[i];
+            ++cnt;
+            if (cnt > m) return false;
+        }
+    }
+    return true;
+}
 
 public int splitArray(int[] nums, int m) {
     long left = 0, right = 0;
@@ -32,16 +47,28 @@ public int splitArray(int[] nums, int m) {
     }
     return (int)left;
 }
-// evaluate if given the sum, can the array be split into m partitions
-public boolean can_split(int[] nums, int m, long sum) {
-    int cnt = 1, curSum = 0;
+
+
+/*
+if the problem is asking for the Maximize MinSum
+It'll be similar algorithm. Instead when can_split() is true, we increase the left side.
+*/
+
+public int splitArray(int[] nums, int m) {
+    long left = 0, right = 0;
+    // initial setup of left and right for the sum range
     for (int i = 0; i < nums.length; ++i) {
-        curSum += nums[i];
-        if (curSum > sum) {
-            curSum = nums[i];
-            ++cnt;
-            if (cnt > m) return false;
-        }
+        left = Math.max((int)left, nums[i]);
+        right += nums[i];
     }
-    return true;
+    // binary search for the max sum
+    while (left < right) {
+        long mid = left + (right - left) / 2;
+        if (can_split(nums, m, mid))
+            left = mid +1;;
+        else
+            right = mid;
+    }
+    return (int)left;
 }
+
