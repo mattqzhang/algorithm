@@ -1,4 +1,9 @@
-/* 二分搜索法来做
+/* 
+Split Array Largest Sum (minimize MaxSum)
+Given an array which consists of non-negative integers and an integer m, you can split the array into m non-empty continuous subarrays. Write an algorithm to minimize the largest sum among these m subarrays.  
+SplitArray.java  O(n * log(sum(weights))
+
+二分搜索法来做
 如果m和数组nums的个数相等，那么每个数组都是一个子数组，所以返回nums中最大的数字即可，如果m为1，那么整个nums数组就是一个子数组，
 返回nums所有数字之和，所以对于其他有效的m值，返回的值必定在上面两个值之间，所以我们可以用二分搜索法来做。
 
