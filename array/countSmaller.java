@@ -9,6 +9,8 @@ You are given an integer array nums and you have to return a new counts array. T
 
 // solution 2:
 // sort the list, then binary search index for each original number in the sorted list.
+// The index is how many elements are smaller than the current one in the remaining array 
+// (that's why we need to delete it after we checked it, because the current one is to the left of the remaining elements and shouldn't be counted in for them)
 
 class Solution {
     public List<Integer> countSmaller(int[] nums) {
@@ -57,7 +59,7 @@ create a bst from end of array, record ct while inserting values
 
 class Node {
     int val;
-    int count; // same value
+    int count; // nodes having the same value
     int left_count; // values smaller than the current node (on left subtree)
     Node left;
     Node right;

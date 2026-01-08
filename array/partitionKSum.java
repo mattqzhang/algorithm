@@ -6,6 +6,48 @@ Partition to K Equal Subset Sum
 Given an array of integers nums and a positive integer k, find whether it's possible to divide this array into k non-empty subsets whose sums are all equal.
 */
 
+/*************************/
+Solution 1: dfs search:
+
+    int[] buckets;
+    int subSum;
+
+    boolean dfsSearch(int[] nums, int idx){
+        if(idx < 0) return true;
+
+        // try add this number to each bucket
+        for (int i=0; i<buckets.length; i++) {
+            if (i>0 && buckets[i] == buckets[i-1])
+                continue;
+
+            buckets[i] += nums[idx];
+            if (buckets[i] <= subSum && dfsSearch(nums, idx-1)){
+                return true;
+            }
+            buckets[i] -= nums[idx];
+        }
+        return false;
+    }
+
+    public boolean canPartitionKSubsets(int[] nums, int k) {
+        if (k<=0) return false;
+        int sum = 0;
+        for (int num : nums){
+            sum += num;
+        }
+        if (sum % k !=0) return false;
+
+        subSum = sum/k;
+        buckets = new int[k];
+
+        Arrays.sort(nums);
+        return dfsSearch(nums, nums.length - 1);        
+    }
+
+
+/***************************/
+Solution 2:
+
 boolean search(int used, int todo, boolean[] memo, int[] nums, int target) {
     if (memo[used] == false) {
         int targ = (todo - 1) % target + 1;
@@ -31,6 +73,7 @@ public boolean canPartitionKSubsets(int[] nums, int k) {
     memo[(1 << nums.length) - 1] = true;
     return search(0, sum, memo, nums, sum / k);
 }
+
 /** recursive solution */
 public boolean search(int[] groups, int ct, int[] nums, int target) {
     if (ct < 0) return true;

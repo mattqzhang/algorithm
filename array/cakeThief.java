@@ -33,14 +33,15 @@ It uses dynamic programming to build up the maximum values for each capacity fro
 */
 
     public static int maxDuffelBagValue(CakeType[] cakeTypes, int capacity) {
+        // add a capacity=0 as base case.
         int[] dp = new int[capacity + 1];
 
         // for each capacity, we try to put each cake type, and dynamically get the max value
-        for (int i = 0; i <= capacity; i++) {
-            for (CakeType cakeType : cakeTypes) {
-                if (cakeType.weight <= i) {
-                    int maxValue = cakeType.value + dp[i - cakeType.weight];
-                    dp[i] = Math.max(dp[i], maxValue);
+        for (int i = 1; i <= capacity; i++) {
+            for (CakeType c : cakeTypes) {
+                // include this cake in the bag
+                if (c.weight <= i) {
+                    dp[i] = Math.max(dp[i], c.value + dp[i - c.weight];
                 }
             }
         }

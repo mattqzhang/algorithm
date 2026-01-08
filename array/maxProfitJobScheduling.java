@@ -19,17 +19,24 @@ https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/
                 jobs[i][1] = endTime[i];
                 jobs[i][2] = profit[i];
             }
+
             // sort based on end time
             Arrays.sort(jobs, (a, b) -> a[1] - b[1]);
-            // <endtime, profit> map, sort by end time,  base of DP
+
+            // <endtime, profit> map, sort by end time, the base of DP
             TreeMap<Integer, Integer> tm = new TreeMap<>();
             tm.put(0, 0);
             int max = 0;
+
+            // get each job in the array, and find the previous job finished before its start, use dp on that job.
+            // if after adding this job, the total profit increases, keep it in treemap for future exploration.
+            // if after adding this job, the total profix is smaller than a job finished earlier, skip this job
             for (int[] job : jobs) {  // each job is an arrary [start, end, profit]
                 // last finished job before current job start
                 int lastEnd = tm.floorKey(job[0]);
                 int curProfit = tm.get(lastEnd) + job[2];
                 // max at this stage
+                // if curProfit is smaller than a job finished earlier, then no need to keep this job in tree map, just discard it.
                 if (curProfit > max) {
                     max = curProfit;
                     tm.put(job[1], max);

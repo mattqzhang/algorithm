@@ -31,8 +31,7 @@ https://leetcode.com/problems/find-the-difference-of-two-arrays/description/
             }
         }
         for (int v : hs2) {
-            if (!hs1.contains(v))
-                unique2.add(v);
+            unique2.add(v);
         }
         List<List<Integer>> result = new LinkedList<>();
         result.add(unique1);
